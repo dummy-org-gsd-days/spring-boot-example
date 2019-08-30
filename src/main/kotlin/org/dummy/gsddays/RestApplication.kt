@@ -18,8 +18,10 @@ class RestApplication {
     @Component
     class RouteHandler {
         fun hello(request: ServerRequest): Mono<ServerResponse> {
-            return ServerResponse.ok().contentType(MediaType.TEXT_PLAIN)
-                    .body(BodyInserters.fromObject("Hello, Spring!"))
+            return ServerResponse
+                .ok()
+                .contentType(MediaType.TEXT_PLAIN)
+                .body(BodyInserters.fromObject("Hello, Spring!"))
         }
     }
 

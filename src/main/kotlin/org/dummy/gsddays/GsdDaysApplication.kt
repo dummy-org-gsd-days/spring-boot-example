@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class GsdDaysApplication
 
 fun main(args: Array<String>) {
-	runApplication<GsdDaysApplication>(*args)
+    runApplication<GsdDaysApplication>(*args)
 }
