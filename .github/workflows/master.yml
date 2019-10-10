@@ -55,7 +55,7 @@ jobs:
         run: |
           docker login docker.pkg.github.com -u dummy-org-gsd-days -p ${{ secrets.GITHUB_TOKEN }}
           docker build . --file Dockerfile --tag docker.pkg.github.com/dummy-org-gsd-days/spring-boot-example:${{ steps.publish.outputs.version }}
-          docker push docker.pkg.github.com/dummy-org-gsd-days/spring-boot-example:${{ steps.publish.outputs.version }}
+          docker push docker.pkg.github.com/dummy-org-gsd-days/spring-boot-example/spring-boot-example:${{ steps.publish.outputs.version }}
 
       - name: Create Release
         id: create_release
