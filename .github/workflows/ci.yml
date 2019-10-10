@@ -15,6 +15,7 @@ jobs:
         with:
           java-version: 11
       - name: Tests
+        id: tests
         run: |
           ./gradlew clean check
           echo "##[set-output name=version;]$(./gradlew properties -q | grep '^version' | awk '{print $2}' | tr -d '[:space:]')"
