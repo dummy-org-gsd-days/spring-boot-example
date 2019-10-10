@@ -1,6 +1,6 @@
 FROM openjdk:11-slim
 
-COPY build/libs/spring-boot-example.jar /app.jar
+COPY build/libs/spring-boot-example*jar /app.jar
 
 EXPOSE 8080
 
