@@ -1,5 +1,7 @@
 # spring-boot-example
 
+![](https://github.com/dummy-org-gsd-days/spring-boot-example/workflows/Publish/badge.svg)
+
 Exposes just a simple `/hello` endpoint. You can run the application:
 
 ```bash
@@ -17,9 +19,9 @@ Content-Length: 14
 Hello, Spring!
 ```
 
-### Development
+## Development
 
-## Running tests
+### Running tests
 
 ```bash
 $ ./gradlew clean check
