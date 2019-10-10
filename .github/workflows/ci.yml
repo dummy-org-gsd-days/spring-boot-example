@@ -15,18 +15,4 @@ jobs:
         with:
           java-version: 11
       - name: Tests
-        id: tests
-        run: |
-          ./gradlew clean check
-          echo "##[set-output name=version;]$(./gradlew properties -q | grep '^version' | awk '{print $2}' | tr -d '[:space:]')"
-
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ steps.tests.outputs.version }}
-          release_name: Release ${{ steps.tests.outputs.version }}
-          draft: false
-          prerelease: false
+        run: ./gradlew clean check
