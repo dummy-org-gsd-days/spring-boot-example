@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "org.dummy-org-gsd-days"
-version = "0.0.5"
+version = "0.0.6"
 
 repositories {
     mavenCentral()
@@ -41,12 +41,6 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
-}
-
-tasks {
-    bootJar {
-        archiveFileName.set("${archiveBaseName.get()}.${archiveExtension.get()}")
-    }
 }
 
 tasks.withType<KotlinCompile> {
