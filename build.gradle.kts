@@ -43,6 +43,12 @@ dependencies {
     testImplementation("io.projectreactor:reactor-test")
 }
 
+tasks {
+    bootJar {
+        archiveFileName.set("${archiveBaseName.get()}.${archiveExtension.get()}")
+    }
+}
+
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
