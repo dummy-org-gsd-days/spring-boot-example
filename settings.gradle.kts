@@ -1,1 +1,1 @@
-rootProject.name = "gsd-days"
+rootProject.name = "spring-boot-example"
