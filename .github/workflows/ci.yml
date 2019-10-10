@@ -19,17 +19,13 @@ jobs:
           ./gradlew clean check
           echo "##[set-output name=version;]$(./gradlew properties -q | grep '^version' | awk '{print $2}' | tr -d '[:space:]')"
 
-  release:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: Create Release
         id: create_release
         uses: actions/create-release@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ jobs.tests.steps.publish.outputs.version }}
-          release_name: Release ${{ jobs.tests.steps.publish.outputs.version }}
+          tag_name: ${{ steps.tests.outputs.version }}
+          release_name: Release ${{ steps.tests.outputs.version }}
           draft: false
           prerelease: false
