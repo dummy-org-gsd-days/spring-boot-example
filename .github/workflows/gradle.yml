@@ -1,4 +1,4 @@
-name: Java CI
+name: CI
 
 on:
   push:
@@ -19,5 +19,5 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
-      - name: Build with Gradle
-        run: ./gradlew build
+      - name: Tests
+        run: ./gradlew clean check
