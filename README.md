@@ -19,9 +19,9 @@ Content-Length: 14
 Hello, Spring!
 ```
 
-### Development
+## Development
 
-## Running tests
+### Running tests
 
 ```bash
 $ ./gradlew clean check
