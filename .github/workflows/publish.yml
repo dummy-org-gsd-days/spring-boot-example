@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  tests:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -14,11 +14,25 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+
       - name: Tests
         run: ./gradlew clean check
+
       - name: Build
         run: ./gradlew bootJar
+
       - name: Publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./gradlew publish
+
+      - name: Create Release
+          id: create_release
+          uses: actions/create-release@master
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            tag_name: ${{ github.ref }}
+            release_name: Release ${{ github.ref }}
+            draft: false
+            prerelease: false
