@@ -58,3 +58,9 @@ jobs:
 
       # Build the JAR file
       - run: ./gradlew bootJar
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - tests
+      - build
