@@ -1,0 +1,24 @@
+name: Feature Branch CI
+
+on:
+  push:
+    branches-ignore: 
+      ['master', 'release/*']
+
+jobs:
+
+  test:
+    name: Unit Tests
+    runs-on: ubuntu-18.04
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup Java JDK
+      uses: actions/setup-java@v1.3.0
+      with:
+        java-version: 1.11
+    
+    - name: Gradle Test
+      run: ./gradlew clean check
+    
