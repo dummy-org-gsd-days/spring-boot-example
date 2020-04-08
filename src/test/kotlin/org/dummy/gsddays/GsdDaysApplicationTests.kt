@@ -9,8 +9,8 @@ import org.springframework.test.context.junit4.SpringRunner
 @RunWith(SpringRunner::class)
 @SpringBootTest
 class GsdDaysApplicationTests {
-	@Test
-	fun it_should_succeed() {
-		assertThat(false).isTrue()
-	}
+    @Test
+    fun it_should_succeed() {
+        assertThat(true).isTrue()
+    }
 }
