@@ -60,7 +60,7 @@ jobs:
           key: v1-dependencies-{{ checksum "build.gradle.kts" }}
 
       # run tests!
-      - run: ./gradlew check -x ktlintMainSourceSetCheck -x ktlintTestSourceSetCheck
+      - run: ./gradlew check -x ktlintMainSourceSetCheck -x ktlintTestSourceSetCheck -x ktlintKotlinScriptCheck
 
       - store_artifacts:
           path: build/reports
