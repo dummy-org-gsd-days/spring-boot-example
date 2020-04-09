@@ -69,7 +69,7 @@ jobs:
       - store_test_results:
           path: build/test-results/test
 
-  integration-tests:
+  integration_tests:
     docker:
       - image: circleci/openjdk:11-jdk
 
@@ -137,10 +137,10 @@ workflows:
     jobs:
       - lint
       - tests
-      - integration-tests:
+      - integration_tests:
           requires:
             - lint
             - tests
-#      - build:
-#          requires:
-#            - integration-tests
+      - build:
+          requires:
+            - integration_tests
