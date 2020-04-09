@@ -27,14 +27,32 @@ tasks {
             freeCompilerArgs = listOf("-Xjsr305=strict")
         }
     }
+
     test {
+        useJUnitPlatform {
+            excludeTags("integration-test")
+        }
         enableAssertions = true
-        useJUnitPlatform()
         testLogging {
             exceptionFormat = FULL
             events = setOf(FAILED, PASSED, SKIPPED, STANDARD_ERROR, STANDARD_OUT)
         }
     }
+
+    val integrationTest by registering(Test::class) {
+        group = "verification"
+        description = "Execute integration tests."
+        useJUnitPlatform {
+            includeTags("integration-test")
+        }
+        enableAssertions = true
+        testLogging {
+            exceptionFormat = FULL
+            events = setOf(FAILED, PASSED, SKIPPED, STANDARD_ERROR, STANDARD_OUT)
+        }
+        shouldRunAfter(test)
+    }
+
     ktlint {
         verbose.set(true)
         version.set("0.36.0")
@@ -72,9 +90,21 @@ publishing {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webflux")
+    implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
+    implementation("org.postgresql:postgresql:42.2.10")
+    compile("org.flywaydb:flyway-core:6.3.3")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+    testImplementation(kotlin("test"))
+    testImplementation(kotlin("test-junit"))
+
+    testImplementation("org.junit.jupiter:junit-jupiter:5.5.1")
+    testImplementation("org.assertj:assertj-core:3.12.0")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
+
+    testCompile("org.testcontainers:junit-jupiter:1.12.1")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.5.2")
 }
