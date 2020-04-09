@@ -130,16 +130,12 @@ jobs:
 
       # Build the JAR file
       - run: ./gradlew bootJar
+
 workflows:
   version: 2
   build_and_test:
     jobs:
       - lint
       - tests
-      - integrationtests:
-          - requires:
-              - lint
-              - tests
-      - build:
-          - requires:
-              - integrationtest
+      - integrationtests
+      - build
