@@ -1,5 +1,6 @@
 package org.dummy.gsddays
 
+import java.sql.ResultSet
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.MediaType
@@ -14,7 +15,6 @@ import org.springframework.web.reactive.function.server.RouterFunctions
 import org.springframework.web.reactive.function.server.ServerRequest
 import org.springframework.web.reactive.function.server.ServerResponse
 import reactor.core.publisher.Mono
-import java.sql.ResultSet
 
 @Component
 class RestApplication {
@@ -32,7 +32,7 @@ class RestApplication {
             return ServerResponse
                 .ok()
                 .contentType(MediaType.TEXT_PLAIN)
-                .body(BodyInserters.fromObject("Hello, ${name}!"))
+                .body(BodyInserters.fromValue("Hello, $name!"))
         }
     }
 

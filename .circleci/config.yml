@@ -34,6 +34,7 @@ jobs:
 
       - store_artifacts:
           path: build/reports
+
   tests:
     docker:
       - image: circleci/openjdk:11-jdk
@@ -67,6 +68,41 @@ jobs:
 
       - store_test_results:
           path: build/test-results/test
+
+  integrationtests:
+    docker:
+      - image: circleci/openjdk:11-jdk
+
+    environment:
+      # Customize the JVM maximum heap limit
+      JVM_OPTS: -Xmx3200m
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "build.gradle.kts" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: ./gradlew dependencies
+
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: v1-dependencies-{{ checksum "build.gradle.kts" }}
+
+      # run tests!
+      - run: ./gradlew integrationTest
+
+      - store_artifacts:
+          path: build/reports
+
+      - store_test_results:
+          path: build/test-results/integrationTest
+
   build:
     docker:
       - image: circleci/openjdk:11-jdk
@@ -100,4 +136,10 @@ workflows:
     jobs:
       - lint
       - tests
-      - build
+      - integrationtests:
+          - requires:
+              - lint
+              - tests
+      - build:
+          - requires:
+              - integrationtest
