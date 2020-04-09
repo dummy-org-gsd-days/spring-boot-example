@@ -24,6 +24,7 @@ class RestApplicationTest {
     private var dockerEnv: DockerComposeContainer<*> = DockerEnv()
         .withServices("postgres")
         .waitingFor("postgres", forLogMessage(".*database system is ready to accept connections.*\\n", 1))
+        .withLocalCompose(true)
 
     init {
         dockerEnv.start()
