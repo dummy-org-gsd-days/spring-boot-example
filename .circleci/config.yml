@@ -76,6 +76,7 @@ jobs:
     environment:
       # Customize the JVM maximum heap limit
       JVM_OPTS: -Xmx3200m
+      TESTCONTAINERS_RYUK_DISABLED: true
 
     steps:
       - checkout
