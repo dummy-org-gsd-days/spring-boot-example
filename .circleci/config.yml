@@ -137,5 +137,10 @@ workflows:
     jobs:
       - lint
       - tests
-      - integrationtests
-      - build
+      - integrationtests:
+          requires:
+            - lint
+            - tests
+      - build:
+          requires:
+            - integrationtest
