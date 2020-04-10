@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: '@project.name@'
+
+  main:
+    banner-mode: 'off'
+
+  mvc:
+    favicon:
+      enabled: false
+
+  datasource:
+    url: 'jdbc:postgresql://localhost:5432/test'
+    username: test
+    password: test
