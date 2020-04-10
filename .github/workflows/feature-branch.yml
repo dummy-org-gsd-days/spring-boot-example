@@ -17,4 +17,4 @@ jobs:
           java-version: 11
 
       - name: Tests
-        run: ./gradlew clean check
+        run: ./gradlew clean check integrationTest

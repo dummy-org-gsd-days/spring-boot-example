@@ -3,6 +3,7 @@
 # Check https://circleci.com/docs/2.0/language-java/ for more details
 #
 version: 2
+executorType: machine
 jobs:
   lint:
     docker:
@@ -34,6 +35,7 @@ jobs:
 
       - store_artifacts:
           path: build/reports
+
   tests:
     docker:
       - image: circleci/openjdk:11-jdk
@@ -67,6 +69,42 @@ jobs:
 
       - store_test_results:
           path: build/test-results/test
+
+  integration_tests:
+    docker:
+      - image: circleci/openjdk:11-jdk
+
+    environment:
+      # Customize the JVM maximum heap limit
+      JVM_OPTS: -Xmx3200m
+      TESTCONTAINERS_RYUK_DISABLED: true
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "build.gradle.kts" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: ./gradlew dependencies
+
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: v1-dependencies-{{ checksum "build.gradle.kts" }}
+
+      # run tests!
+      - run: ./gradlew integrationTest
+
+      - store_artifacts:
+          path: build/reports
+
+      - store_test_results:
+          path: build/test-results/integrationTest
+
   build:
     docker:
       - image: circleci/openjdk:11-jdk
@@ -94,10 +132,17 @@ jobs:
 
       # Build the JAR file
       - run: ./gradlew bootJar
+
 workflows:
   version: 2
   build_and_test:
     jobs:
       - lint
       - tests
-      - build
+      - integration_tests:
+          requires:
+            - lint
+            - tests
+      - build:
+          requires:
+            - integration_tests
