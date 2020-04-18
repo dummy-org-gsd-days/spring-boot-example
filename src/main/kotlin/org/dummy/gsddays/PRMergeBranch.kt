@@ -1,5 +1,5 @@
 package org.dummy.gsddays
 
 class PRMergeBranch {
-    val value: Int = 42
+    val value: Int = 45
 }
