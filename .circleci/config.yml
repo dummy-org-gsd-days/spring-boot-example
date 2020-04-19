@@ -144,7 +144,7 @@ jobs:
     steps:
       - checkout:
           post:
-            git pull --ff-only origin "refs/pull/${CI_PULL_REQUEST//*pull\//}/merge"
+            git pull origin "refs/pull/${CI_PULL_REQUEST//*pull\//}/merge"
 
       # Download and cache dependencies
       - restore_cache:
@@ -161,7 +161,11 @@ jobs:
           key: v1-dependencies-{{ checksum "build.gradle.kts" }}
 
       # run tests!
-      - run: ./gradlew test
+      - run:
+          command: |
+            git status
+            git log -n 3
+            ./gradlew test
 
 workflows:
   version: 2
