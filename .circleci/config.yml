@@ -142,9 +142,7 @@ jobs:
       JVM_OPTS: -Xmx3200m
 
     steps:
-      - checkout:
-          post:
-            git pull origin "refs/pull/${CI_PULL_REQUEST//*pull\//}/merge"
+      - checkout
 
       # Download and cache dependencies
       - restore_cache:
@@ -163,8 +161,8 @@ jobs:
       # run tests!
       - run:
           command: |
-            git status
-            git log -n 3
+            # Workaraund to merge with the TARGET branch.
+            git pull origin "refs/pull/${CI_PULL_REQUEST//*pull\//}/merge"
             ./gradlew test
 
 workflows:
