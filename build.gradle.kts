@@ -17,7 +17,7 @@ plugins {
 }
 
 group = "org.dummy-org-gsd-days"
-version = "0.0.10"
+version = "0.0.11"
 
 tasks {
     withType<KotlinCompile> {
