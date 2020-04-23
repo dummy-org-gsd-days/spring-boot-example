@@ -1,6 +1,6 @@
 # spring-boot-example
 
-![](https://github.com/dummy-org-gsd-days/spring-boot-example/workflows/Publish/badge.svg)
+![Master](https://github.com/dummy-org-gsd-days/spring-boot-example/workflows/Master/badge.svg)
 
 Exposes a simple `/hello` endpoint. You can run the application:
 
