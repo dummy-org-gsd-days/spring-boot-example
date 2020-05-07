@@ -19,7 +19,12 @@ jobs:
       - name: Tests
         run: ./gradlew clean check integrationTest
 
+      - name: Sonarqube
+        if: always()
+        run: ./gradlew sonarqube
+
       - uses: actions/upload-artifact@v1
+        if: always()
         with:
           name: reports
           path: build/reports

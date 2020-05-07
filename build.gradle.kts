@@ -14,6 +14,8 @@ plugins {
     `maven-publish`
     kotlin("jvm") version "1.3.71"
     kotlin("plugin.spring") version "1.3.71"
+    id("org.sonarqube") version "2.8"
+    id("io.gitlab.arturbosch.detekt") version "1.0.1"
 }
 
 group = "org.dummy-org-gsd-days"
@@ -59,6 +61,31 @@ tasks {
         reporters {
             reporter(ReporterType.PLAIN)
             reporter(ReporterType.CHECKSTYLE)
+        }
+    }
+
+    detekt {
+        failFast = true
+        parallel = true
+        reports {
+            txt.enabled = false
+            html.enabled = false
+            xml {
+                enabled = true
+                destination = file("$buildDir/reports/detekt/detekt.xml")
+            }
+        }
+    }
+
+    sonarqube {
+        sonarqube.get().dependsOn(detekt)
+
+        properties {
+            property("sonar.projectKey", "dummy-org-gsd-days_spring-boot-example")
+            property("sonar.organization", "dummy-org-gsd-days")
+            property("sonar.host.url", "https://sonarcloud.io")
+            property("sonar.login", "f13097a6a444985c665b85348275002f31c0cc56")
+            property("sonar.kotlin.detekt.reportPaths", detekt.get().reports.xml.destination!!.path)
         }
     }
 }

@@ -1,6 +1,6 @@
 package org.dummy.gsddays
 
-import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.autoconfigure.*
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
