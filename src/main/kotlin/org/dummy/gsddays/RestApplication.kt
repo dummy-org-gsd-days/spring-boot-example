@@ -24,7 +24,7 @@ class RestApplication {
         fun hello(request: ServerRequest): Mono<ServerResponse> {
 
             val rowMapper: RowMapper<String> = RowMapper<String> { resultSet: ResultSet, _: Int ->
-                resultSet.getString("name")
+                resultSet.getString( "name" )
             }
 
             val name = jdbcTemplate.query("SELECT name from names LIMIT 1", rowMapper)[0]
