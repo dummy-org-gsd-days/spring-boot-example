@@ -20,6 +20,23 @@ jobs:
         run: ./gradlew clean check integrationTest
 
       - uses: actions/upload-artifact@v1
+        if: always()
         with:
           name: reports
           path: build/reports
+
+  ktlint:
+    name: Check Code Quality
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+
+      - name: ktlint
+        uses: ScaCap/action-ktlint@master
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-check
