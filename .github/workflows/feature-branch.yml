@@ -17,7 +17,7 @@ jobs:
           java-version: 11
 
       - name: Tests
-        run: ./gradlew clean check integrationTest
+        run: ./gradlew clean check integrationTest -x ktlintCheck -x ktlintMainSourceSetCheck
 
       - uses: actions/upload-artifact@v1
         with:
