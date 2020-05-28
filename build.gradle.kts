@@ -67,6 +67,7 @@ tasks {
     ktlint {
         verbose.set(true)
         version.set("0.36.0")
+        ignoreFailures.set(true)
         kotlinScriptAdditionalPaths { include(fileTree(".")) }
         filter { exclude("build/**") }
         reporters {
