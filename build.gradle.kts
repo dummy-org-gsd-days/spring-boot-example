@@ -16,6 +16,7 @@ plugins {
     kotlin("plugin.spring") version "1.3.71"
     id("org.sonarqube") version "2.8"
     id("io.gitlab.arturbosch.detekt") version "1.0.1"
+    jacoco
 }
 
 group = "org.dummy-org-gsd-days"
@@ -38,6 +39,7 @@ tasks {
             exceptionFormat = FULL
             events = setOf(FAILED, PASSED, SKIPPED, STANDARD_ERROR)
         }
+        finalizedBy(jacocoTestReport.get())
     }
 
     val integrationTest by registering(Test::class) {
@@ -50,6 +52,15 @@ tasks {
         testLogging {
             exceptionFormat = FULL
             events = setOf(FAILED, PASSED, SKIPPED, STANDARD_ERROR)
+        }
+        finalizedBy(jacocoTestReport.get())
+    }
+
+    jacocoTestReport {
+        dependsOn(test, integrationTest)
+        reports {
+            xml.isEnabled = true
+            csv.isEnabled = false
         }
     }
 
