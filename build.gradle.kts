@@ -90,7 +90,7 @@ tasks {
     }
 
     sonarqube {
-        sonarqube.get().dependsOn(detekt)
+        sonarqube.get().dependsOn(detekt, jacocoTestReport)
 
         properties {
             property("sonar.projectKey", "dummy-org-gsd-days_spring-boot-example")
