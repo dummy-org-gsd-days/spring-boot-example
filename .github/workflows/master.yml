@@ -19,7 +19,7 @@ jobs:
       - name: Tests
         run: ./gradlew clean check integrationTest
 
-      - uses: actions/upload-artifact@v2.1.1
+      - uses: actions/upload-artifact@v2.1.2
         with:
           name: reports
           path: build/reports
