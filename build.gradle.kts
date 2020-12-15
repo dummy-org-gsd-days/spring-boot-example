@@ -104,5 +104,5 @@ dependencies {
     testImplementation("io.projectreactor:reactor-test")
 
     testCompile("org.testcontainers:junit-jupiter:1.12.1")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.5.2")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.7.0")
 }
