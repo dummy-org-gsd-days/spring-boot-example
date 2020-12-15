@@ -103,6 +103,6 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
 
-    testCompile("org.testcontainers:junit-jupiter:1.12.1")
+    testCompile("org.testcontainers:junit-jupiter:1.15.1")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.5.2")
 }
