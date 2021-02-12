@@ -10,7 +10,7 @@ plugins {
     "kotlin"
     id("org.springframework.boot") version "2.2.0.RELEASE"
     id("io.spring.dependency-management") version "1.0.10.RELEASE"
-    id("org.jlleitschuh.gradle.ktlint") version "9.2.1"
+    id("org.jlleitschuh.gradle.ktlint") version "10.0.0"
     `maven-publish`
     kotlin("jvm") version "1.3.71"
     kotlin("plugin.spring") version "1.3.71"
