@@ -12,7 +12,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.10.RELEASE"
     id("org.jlleitschuh.gradle.ktlint") version "9.2.1"
     `maven-publish`
-    kotlin("jvm") version "1.3.71"
+    kotlin("jvm") version "1.4.30"
     kotlin("plugin.spring") version "1.3.71"
 }
 
@@ -103,6 +103,6 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
 
-    testCompile("org.testcontainers:junit-jupiter:1.12.1")
+    testCompile("org.testcontainers:junit-jupiter:1.15.2")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.5.2")
 }
