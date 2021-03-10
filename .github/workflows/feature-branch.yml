@@ -2,6 +2,7 @@ name: Feature Branch
 
 on:
   pull_request_target:
+    types: [assigned, opened, synchronize, reopened]
 
 jobs:
   tests:
