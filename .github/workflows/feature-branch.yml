@@ -1,9 +1,17 @@
 name: Feature Branch
 
 on:
-  pull_request:
+  push:
     branches:
       - master
+  pull_request:
+    branches-ignore:
+      - 'dependabot/**'
+  pull_request_target:
+    types: [assigned, opened, synchronize, reopened]
+    branches:
+      - 'dependabot/**'
+
 
 jobs:
   tests:
