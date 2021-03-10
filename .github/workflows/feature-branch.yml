@@ -1,9 +1,6 @@
 name: Feature Branch
 
 on:
-  pull_request:
-    branches:
-      - master
   pull_request_target:
 
 jobs:
