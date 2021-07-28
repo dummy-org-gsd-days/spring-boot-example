@@ -98,11 +98,11 @@ dependencies {
     testImplementation(kotlin("test"))
     testImplementation(kotlin("test-junit"))
 
-    testImplementation("org.junit.jupiter:junit-jupiter:5.7.1")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.7.2")
     testImplementation("org.assertj:assertj-core:3.19.0")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
 
-    testCompile("org.testcontainers:junit-jupiter:1.15.2")
+    testCompile("org.testcontainers:junit-jupiter:1.16.0")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.5.2")
 }
