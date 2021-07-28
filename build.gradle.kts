@@ -89,7 +89,7 @@ publishing {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
-    implementation("org.postgresql:postgresql:42.2.19")
+    implementation("org.postgresql:postgresql:42.2.23")
     compile("org.flywaydb:flyway-core:7.11.4")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -99,7 +99,7 @@ dependencies {
     testImplementation(kotlin("test-junit"))
 
     testImplementation("org.junit.jupiter:junit-jupiter:5.7.2")
-    testImplementation("org.assertj:assertj-core:3.19.0")
+    testImplementation("org.assertj:assertj-core:3.20.2")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
 
