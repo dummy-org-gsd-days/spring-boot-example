@@ -89,7 +89,7 @@ publishing {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
-    implementation("org.postgresql:postgresql:42.2.19")
+    implementation("org.postgresql:postgresql:42.2.24")
     compile("org.flywaydb:flyway-core:7.11.4")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
