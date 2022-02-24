@@ -8,7 +8,7 @@ import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
 plugins {
     "kotlin"
-    id("org.springframework.boot") version "2.4.3"
+    id("org.springframework.boot") version "2.6.4"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     id("org.jlleitschuh.gradle.ktlint") version "9.2.1"
     `maven-publish`
