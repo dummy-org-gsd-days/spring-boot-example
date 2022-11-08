@@ -12,7 +12,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     id("org.jlleitschuh.gradle.ktlint") version "9.2.1"
     `maven-publish`
-    kotlin("jvm") version "1.3.71"
+    kotlin("jvm") version "1.7.21"
     kotlin("plugin.spring") version "1.3.71"
 }
 
