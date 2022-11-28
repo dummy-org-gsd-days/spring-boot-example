@@ -13,7 +13,7 @@ plugins {
     id("org.jlleitschuh.gradle.ktlint") version "9.2.1"
     `maven-publish`
     kotlin("jvm") version "1.3.71"
-    kotlin("plugin.spring") version "1.3.71"
+    kotlin("plugin.spring") version "1.7.22"
 }
 
 group = "org.dummy-org-gsd-days"
